@@ -56,7 +56,7 @@ class Settings(BaseSettings):
     groq_api_key2: str = ''
     groq_api_key3: str = ''
     groq_api_keys: str = ''
-    groq_llm_model: str = 'llama-3.3-70b-versatile'
+    groq_llm_model: str = 'openai/gpt-oss-120b'
     
     def get_groq_api_keys(self) -> List[str]:
         keys = []
