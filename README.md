@@ -133,4 +133,4 @@ To run services locally outside of Docker:
 - **HyDE & Multilingual Search**: Trilingual HyDE retrieval fallback & multilingual query expansion. **(Done)**
 - **Global AI Singleton Caching**: Thread-safe provider factory singleton caching. **(Done)**
 - **Compliance Dashboard**: Add UI components to monitor audit logs and ensure SOC2/GDPR compliance.
-- **RBAC UI**: Build interfaces to intuitively manage roles and granular resource permissions.
+- **RBAC UI**: Build interfaces to intuitively manage roles and granular resource permissions.# vicharmitra
