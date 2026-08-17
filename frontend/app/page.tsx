@@ -5,14 +5,13 @@ import Link from "next/link";
 import { Zap, Search as SearchIcon, FileText } from "lucide-react";
 import { isAuthenticated } from "@/lib/auth";
 import { Button } from "@/components/ui/Button";
-import BackendUrlConfig from "@/components/BackendUrlConfig";
 
 export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
     if (isAuthenticated()) {
-      router.replace("/drive");
+      router.replace("/library");
     }
   }, [router]);
 
@@ -39,11 +38,6 @@ export default function Home() {
             <Zap className="w-5 h-5 ml-2 group-hover:text-yellow-400 transition-colors" />
           </Button>
         </Link>
-      </div>
-
-      {/* Backend Server Configuration (Dev Phase) */}
-      <div className="w-full max-w-2xl mb-16 text-left">
-        <BackendUrlConfig />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">

@@ -281,7 +281,7 @@ export default function AdminPage() {
       <header className="h-16 px-6 flex items-center justify-between border-b border-[#e1e3e1]/60 bg-white/80 backdrop-blur-md sticky top-0 z-20">
         <div className="flex items-center gap-4">
           <Link
-            href="/drive"
+            href="/library"
             className="flex items-center gap-2 text-sm text-[#444746] hover:text-[#1f1f1f] transition-colors px-3 py-1.5 rounded-lg hover:bg-[#f0f4f9]"
           >
             <ArrowLeft className="w-4 h-4" />

@@ -10,7 +10,7 @@ export default function NotFound() {
       <h1 className="text-4xl font-extrabold mb-2">404 - Page Not Found</h1>
       <p className="text-textMuted mb-6">The page you are looking for does not exist or has been moved.</p>
       <Link
-        href="/drive"
+        href="/library"
         className="px-6 py-2.5 bg-primary text-white font-medium rounded-lg shadow-md hover:bg-primary/90 transition-all"
       >
         Back to Drive

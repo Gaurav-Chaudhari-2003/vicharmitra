@@ -1,10 +1,18 @@
 import "./globals.css";
 import React from "react";
+import { Outfit } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata = {
-  title: "Vicharmitra",
-  description: "AI Powered Document Management System - Vicharmitra",
-  viewport: "width=device-width, initial-scale=1",
+  title: "Vicharmitra AI",
+  description: "AI-Powered Digital Library for students and researchers — grounded, citation-backed answers from your own books.",
   icons: {
     icon: [
       { url: "/vicharmitra-logo.svg", type: "image/svg+xml" },
@@ -24,9 +32,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-gdriveBg min-h-screen text-gdriveTextMain overflow-hidden select-none">
-        {children}
+    <html lang="en" className={outfit.variable} suppressHydrationWarning>
+      <body className="bg-canvas min-h-screen text-text-main antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

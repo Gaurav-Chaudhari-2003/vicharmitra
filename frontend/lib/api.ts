@@ -2,69 +2,7 @@ import { getAccessToken, getUserProfile, setUserProfile, clearTokens } from "./a
 import { offlineStore } from "./offlineStore";
 import type { Folder, FolderTreeNode, DocumentListItem, DocumentDetailResponse, DriveStats, SearchResponse, ChatSession, ChatMessage, ChatSessionListItem } from "@/types";
 
-export const getBaseUrl = (): string => {
-  if (typeof window !== "undefined") {
-    const custom = localStorage.getItem("custom_backend_url");
-    if (custom && custom.trim() !== "") {
-      return custom.trim().replace(/\/+$/, "");
-    }
-  }
-  let url = process.env.NEXT_PUBLIC_API_URL || "https://aa0d-103-226-171-223.ngrok-free.app";
-  if (typeof window !== "undefined") {
-    // If in browser and URL points to internal docker service name 'backend', use default ngrok URL
-    if (url.includes("backend:8000")) {
-      url = "https://aa0d-103-226-171-223.ngrok-free.app";
-    }
-  }
-  return url.replace(/\/+$/, "");
-};
-
-export const setCustomBaseUrl = (url: string): void => {
-  if (typeof window !== "undefined") {
-    const cleaned = url.trim().replace(/\/+$/, "");
-    if (cleaned) {
-      localStorage.setItem("custom_backend_url", cleaned);
-    } else {
-      localStorage.removeItem("custom_backend_url");
-    }
-  }
-};
-
-export const testBackendConnection = async (targetUrl: string): Promise<{ success: boolean; message: string }> => {
-  let cleaned = targetUrl.trim().replace(/\/+$/, "");
-  if (!cleaned.startsWith("http://") && !cleaned.startsWith("https://")) {
-    cleaned = `https://${cleaned}`;
-  }
-  
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 6000);
-  
-  try {
-    const res = await fetch(`${cleaned}/api/v1/health`, {
-      method: "GET",
-      headers: {
-        "ngrok-skip-browser-warning": "true",
-      },
-      signal: controller.signal,
-    });
-    clearTimeout(timeoutId);
-    if (res.ok || res.status === 200) {
-      setCustomBaseUrl(cleaned);
-      return { success: true, message: `Connected successfully! Active backend set to: ${cleaned}` };
-    } else if (res.status === 404 || res.status === 401) {
-      setCustomBaseUrl(cleaned);
-      return { success: true, message: `Server reached (status ${res.status}). Active backend set to: ${cleaned}` };
-    } else {
-      return { success: false, message: `Server returned error status ${res.status}` };
-    }
-  } catch (err: any) {
-    clearTimeout(timeoutId);
-    if (err.name === "AbortError") {
-      return { success: false, message: "Connection timed out (6s). Please check if ngrok/backend is running." };
-    }
-    return { success: false, message: err.message || "Failed to connect to backend server address." };
-  }
-};
+export const getBaseUrl = (): string => "http://localhost:8000";
 
 async function request(path: string, options: RequestInit = {}): Promise<any> {
   const headers = new Headers(options.headers || {});

@@ -107,7 +107,7 @@ export default function ProfilePage() {
       <header className="h-16 px-6 flex items-center justify-between border-b border-borderDark/60 bg-surface/50 backdrop-blur-md sticky top-0 z-20">
         <div className="flex items-center gap-4">
           <Link
-            href="/drive"
+            href="/library"
             className="flex items-center gap-2 text-sm text-textMuted hover:text-textMain transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -360,7 +360,7 @@ export default function ProfilePage() {
                           </div>
 
                           <Link
-                            href="/drive"
+                            href="/library"
                             className="px-3 py-1.5 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold rounded-lg border border-primary/20 transition-all shrink-0"
                           >
                             Open in Drive

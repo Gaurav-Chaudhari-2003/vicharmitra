@@ -7,7 +7,6 @@ import { api } from "@/lib/api";
 import { storeTokens } from "@/lib/auth";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import BackendUrlConfig from "@/components/BackendUrlConfig";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -25,7 +24,7 @@ export default function LoginPage() {
     try {
       const res = await api.auth.login(email, password);
       storeTokens(res.access_token, res.refresh_token);
-      router.push("/drive");
+      router.push("/library");
     } catch (err: any) {
       setError(err.message || "Invalid credentials");
     } finally {
@@ -113,10 +112,6 @@ export default function LoginPage() {
 
           </form>
         </Card>
-
-        <div className="mt-6">
-          <BackendUrlConfig compact />
-        </div>
       </div>
     </div>
   );

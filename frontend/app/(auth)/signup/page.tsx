@@ -39,12 +39,12 @@ export default function SignUpPage() {
       const res = await api.auth.signUp(fullName, email, password);
       if (res.access_token && res.refresh_token) {
         storeTokens(res.access_token, res.refresh_token);
-        router.push("/drive");
+        router.push("/library");
       } else {
         // Fallback login
         const loginRes = await api.auth.login(email, password);
         storeTokens(loginRes.access_token, loginRes.refresh_token);
-        router.push("/drive");
+        router.push("/library");
       }
     } catch (err: any) {
       setError(err.message || "Registration failed. Please try again.");
